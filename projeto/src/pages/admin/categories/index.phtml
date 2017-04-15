@@ -1,0 +1,42 @@
+<?php require VIEWS . '/includes/header.phtml';?>
+	<div class="row">
+		<div class="col-md-12">
+			<h1>
+			<a href="<?=HOME . '/admin/categories/save';?>" class="btn btn-default btn-success pull-right">
+				Criar Categoria
+			</a>
+			
+			Categorias
+			</h1>
+			<hr>
+		</div>
+	</div>
+	<div class="row">
+		<?php require VIEWS . '/includes/message.phtml'; ?>
+	</div>
+	<div class="row">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Nome</th>
+					<th>Criado Em</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <?php foreach($categories as $c): ?>
+				<tr>
+					<td><?=$c['id'];?></td>
+					<td><?=$c['name'];?></td>
+					<td><?=date("d/m/Y H:i:s", strtotime($c['created_at']));?></td>
+					<td>
+						<a href="<?=HOME;?>/admin/categories/edit/<?=$c['id'];?>" class="btn btn-sm btn-warning">Editar</a>
+						<a href="<?=HOME;?>/admin/categories/remove/<?=$c['id'];?>" class="btn btn-sm btn-danger">Remover</a>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+<?php require VIEWS . '/includes/footer.phtml';?>

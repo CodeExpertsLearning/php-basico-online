@@ -1,0 +1,43 @@
+<?php require VIEWS . '/includes/header.phtml';?>
+	<div class="row">
+		<div class="col-md-12">
+			<h1>
+			<a href="<?=HOME . '/admin/users/save';?>" class="btn btn-default btn-success pull-right">
+				Criar Usuário
+			</a>
+			Usuário
+			</h1>
+			<hr>
+		</div>
+	</div>
+	<div class="row">
+		<?php require VIEWS . '/includes/message.phtml'; ?>
+	</div>
+	<div class="row">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Nome</th>
+					<th>Email</th>
+					<th>Criado Em</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <?php foreach($users as $u): ?>
+				<tr>
+					<td><?=$u['id'];?></td>
+					<td><?=$u['name'];?></td>
+					<td><?=$u['email'];?></td>
+					<td><?=date("d/m/Y H:i:s", strtotime($u['created_at']));?></td>
+					<td>
+						<a href="<?=HOME;?>/admin/users/edit/<?=$u['id'];?>" class="btn btn-sm btn-warning">Editar</a>
+						<a href="<?=HOME;?>/admin/users/remove/<?=$u['id'];?>" class="btn btn-sm btn-danger">Remover</a>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+<?php require VIEWS . '/includes/footer.phtml';?>

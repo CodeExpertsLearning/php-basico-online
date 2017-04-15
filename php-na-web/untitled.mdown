@@ -1,0 +1,2 @@
+GET -> via url index.php?name=Nanderson
+POST -> Envia os dados via Corpo do HTTP

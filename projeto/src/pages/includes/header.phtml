@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Página Inicial Do Painel</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		.content {
+			margin-top: 80px;
+		}
+	</style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="<?=HOME;?>/admin/dashboard">Painel Administrativo</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li <?php if(isUrl('dashboard')): ?> class="active"<?php endif;?>>
+          <a href="<?=HOME;?>/admin/dashboard">Home</a>
+        </li>
+        <li <?php if(isUrl('users')): ?> class="active"<?php endif;?>>
+          <a href="<?=HOME . '/admin/users/list';?>">Usuário</a>
+          </li>
+        <li <?php if(isUrl('products')): ?> class="active"<?php endif;?>>
+          <a href="<?=HOME . '/admin/products/list';?>">Produtos</a>
+          </li>
+        <li <?php if(isUrl('categories')): ?> class="active"<?php endif;?>>
+          <a href="<?=HOME . '/admin/categories/list';?>">Categorias</a>
+          </li>
+
+        <li>
+          <a href="<?=HOME . '/auth/logout';?>">Sair</a>
+        </li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+
+<div class="container content">

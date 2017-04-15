@@ -1,0 +1,30 @@
+<?php require VIEWS . '/includes/header.phtml';?>
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Categoria</h1>
+			<a href="<?=HOME . '/admin/categories/list';?>" class="btn btn-warning">
+				Voltar
+			</a>
+			<hr>
+		</div>
+	</div>
+	<div class="row">
+		<?php require VIEWS . '/includes/message.phtml'; ?>
+	</div>
+	<div class="row">
+		<form action="<?=HOME . '/admin/categories/save';?>" method="POST">
+
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Nome(*)</label>
+		    <input type="text" class="form-control" placeholder="Nome" name="name" <?php if(isset($_POST['name'])):?> value="<?=$_POST['name'];?>" <?php endif;?>>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Descrição(*)</label>
+              <textarea class="form-control" placeholder="Descrição da Categoria" name="description"></textarea>
+		  </div>
+		 
+		  <button type="submit" class="btn btn-success">Salvar</button>
+		</form>
+	</div>
+<?php require VIEWS . '/includes/footer.phtml';?>

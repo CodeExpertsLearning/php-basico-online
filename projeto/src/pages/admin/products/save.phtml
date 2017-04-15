@@ -1,0 +1,63 @@
+<?php require VIEWS . '/includes/header.phtml';?>
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Cadastrar Produto</h1>
+			<a href="<?=HOME . '/admin/products/list';?>" class="btn btn-warning">
+				Voltar
+			</a>
+			<hr>
+		</div>
+	</div>
+
+	<div class="row">
+		<?php require VIEWS . '/includes/message.phtml'; ?>
+	</div>
+
+	<div class="row">
+		<form action="<?=HOME . '/admin/products/save';?>" method="POST" enctype="multipart/form-data">
+
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Nome</label>
+		    <input type="text" class="form-control" placeholder="Nome" name="name">
+		  </div>
+
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Slug (Ex.: product-um)</label>
+		    <input type="text" class="form-control" placeholder="Slug" name="slug">
+		  </div>
+
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Preço</label>
+		    <input type="text" class="form-control" placeholder="Preço" name="price">
+		  </div>
+		  
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Quantidade</label>
+		    <input type="text" class="form-control" placeholder="Quantidade" name="amount">
+		  </div>
+		 
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Descrição</label>
+		    <textarea class="form-control" placeholder="Descrição" name="description"></textarea>
+		  </div>
+
+		  <div class="form-group">
+		  	<label>Categoria deste Produto</label>
+		  	<select name="category_id">
+		  		<?php foreach($categories as $category): ?>
+		  			<option value="<?=$category['id']?>"><?=$category['name']?></option>
+		  		<?php endforeach;?>
+		  	</select>
+		  </div>
+
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Imagens do Produto</label>
+		    <input type="file" name="images[]" multiple>
+		  </div>
+
+		  
+
+		  <button type="submit" class="btn btn-success">Salvar</button>
+		</form>
+	</div>
+<?php require VIEWS . '/includes/footer.phtml';?>

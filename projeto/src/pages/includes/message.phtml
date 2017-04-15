@@ -1,0 +1,17 @@
+<?php $msg = getFlash('warning'); if($msg): ?>
+	<div class="alert alert-warning">
+		<?=$msg;?>
+	</div>
+<?php endif;?>
+
+<?php $msg = getFlash('error'); if($msg): ?>
+    <div class="alert alert-danger">
+        <?=$msg;?>
+    </div>
+<?php endif;?>
+
+<?php $msg = getFlash('success'); if($msg): ?>
+    <div class="alert alert-success">
+        <?=$msg;?>
+    </div>
+<?php endif;?>

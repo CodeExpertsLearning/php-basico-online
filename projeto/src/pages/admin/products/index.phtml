@@ -1,0 +1,56 @@
+<?php require VIEWS . '/includes/header.phtml';?>
+	<div class="row">
+		<div class="col-md-12">
+			<h1>
+			<a href="<?=HOME . '/admin/products/save';?>" class="btn btn-default btn-success pull-right">
+				Cadastrar Produto
+			</a>
+			Produtos
+			</h1>
+			
+			<hr>
+		</div>
+	</div>
+
+	<div class="row">
+		<?php require VIEWS . '/includes/message.phtml'; ?>
+	</div>
+
+	<div class="row">
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>#</th>
+					<th>Produto</th>
+					<th>Preço</th>
+					<th>Categoria</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody>
+			    <?php foreach($products as $p): ?>
+				<tr>
+					<td>
+						<?php if($p['image']): ?>
+							<img src="<?=HOME .'/assets/uploads/thumbs/' . $p['image'];?>" alt="" width="100px">
+						<?php else: ?>
+							<img src="http://placehold.it/100X100" alt="">
+						<?php endif; ?>
+					</td>
+					<td><?=$p['id'];?></td>
+					<td><?=$p['name'];?></td>
+					<td><?=$p['price'];?></td>
+					<td>
+						<p class="label label-success"><?=$p['category']?></p>
+					</td>
+					<td>
+						<a href="<?=HOME . '/admin/products/edit/' . $p['id'];?>" class="btn btn-sm btn-warning">Editar</a>
+						<a href="<?=HOME . '/admin/products/remove/' . $p['id'];?>" class="btn btn-sm btn-danger">Remover</a>
+					</td>
+				</tr>
+			   <?php endforeach; ?>
+			</tbody>
+		</table>
+	</div>
+<?php require VIEWS . '/includes/footer.phtml';?>
