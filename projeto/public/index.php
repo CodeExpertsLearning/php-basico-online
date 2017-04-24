@@ -62,5 +62,15 @@ if($page[0] == 'auth') {
 
      header('Location: ' . HOME . '/auth/login');
    }
+   
+   if($page[1] == 'relembrar-senha') {
+       require 'src/functions/auth/remember-password.php';
+       require 'src/routes/' . $page[0] . '/remember-password.route.php';
+   }
+
+
+   if($page[1] == 'atualizar-senha') {
+       require 'src/routes/' . $page[0] . '/update-password.route.php';
+   }
 }
 
