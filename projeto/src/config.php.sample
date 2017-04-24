@@ -1,0 +1,27 @@
+<?php
+//Main Config
+define('HOME', '');
+define('VIEWS', __DIR__ . '/pages');
+
+define('APP_ROOT', dirname(__DIR__));
+
+//DATABASE CONFIG
+define('DB_HOST', '');
+define('DB_USER', '');
+define('DB_PASSWORD', '');
+define('DB_NAME', '');
+
+//UPLOAD FOLDER
+define('FOLDER', dirname(__DIR__) .'/public/assets/uploads');
+
+//APP KEY
+define('APP_KEY', '');
+
+//SMTP Config
+define('SMTP_HOST', '');
+define('SMTP_USER', '');
+define('SMTP_PASSWORD', '');
+define('SMTP_ENCRYPTION', '');
+define('SMTP_PORT', '');
+define('SMTP_FROM', '');
+define('SMTP_USER_FROM', '');
