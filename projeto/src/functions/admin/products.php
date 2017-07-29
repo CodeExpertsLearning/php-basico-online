@@ -128,15 +128,40 @@ function get($pdo, $id)
  	return $return;
 }
 
-function getProductBySlug($pdo, $slug) 
+function getProductBySlug($pdo, $slug, $count = true) 
 {
-	$sql = "SELECT id, name, price, description, slug, amount FROM products WHERE slug = :slug";
+	$sql = "SELECT p.id, p.name, p.category_id, p.price, p.description, p.slug, p.amount, pi.id as image_id, pi.image FROM products p
+			LEFT JOIN 
+			    products_images pi
+			ON 
+			    pi.product_id = p.id WHERE p.slug = :slug";
 
 	$get = $pdo->prepare($sql);
     $get->bindValue(":slug", $slug, PDO::PARAM_STR);
 	$get->execute(); 
 
-	return $get->rowCount();
+	if($count) {
+		return $get->rowCount();	
+	} else {
+		$return = [];
+
+		foreach($get->fetchAll(PDO::FETCH_ASSOC) as $p) {
+			$return['id'] = $p['id'];
+			$return['name'] = $p['name'];
+			$return['category_id'] = $p['category_id'];
+			$return['price'] = $p['price'];
+			$return['description'] = $p['description'];
+			$return['slug'] = $p['slug'];
+			$return['amount'] = $p['amount'];
+
+			if($p['image'] && $p['image_id']) {
+				$return['images'][] = array('id' => $p['image_id'], 'image' => $p['image']);
+			}
+		}
+
+	 	return $return;
+	}
+	
 }
 
 function update($pdo, $data)

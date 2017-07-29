@@ -74,3 +74,69 @@ if($page[0] == 'auth') {
    }
 }
 
+if($page[0] == '') {
+  require 'src/functions/admin/categories.php';
+  require 'src/functions/admin/products.php';
+
+  require VIEWS . '/site/home.phtml';
+}
+
+if($page[0] == 'product') {
+
+  if(!isset($page[1])
+     || $page[1] == '') {
+
+    addFlash('warning', 'Nenhum Produto Selecionada!');
+    return header('Location: ' . HOME);
+  }
+  
+  $slug = (string) $page[1];
+
+  require 'src/functions/admin/products.php';
+  require 'src/functions/admin/categories.php';
+
+  $product = getProductBySlug(connection(), $slug, false);
+
+  require VIEWS . '/site/product.phtml';
+}
+
+if($page[0] == 'categories') {
+
+  if(!isset($page[1]) 
+    || $page[1] == '') {
+
+    addFlash('warning', 'Nenhuma Categoria Selecionada!');
+    return header('Location: ' . HOME);
+  }
+
+   $slug = (string) $page[1];
+
+  require 'src/functions/admin/products.php';
+  require 'src/functions/admin/categories.php';
+
+  $sql = "SELECT 
+        p.*,
+        c.name as category,
+        (SELECT pi.image FROM products_images pi WHERE p.id = pi.product_id LIMIT 1) AS image
+      FROM 
+        products p 
+      LEFT JOIN 
+         categories c 
+      ON
+         p.category_id = c.id
+      WHERE 
+          c.slug = :slug
+      ORDER BY id DESC";
+
+  $pdo = connection();
+  
+  $get = $pdo->prepare($sql);
+
+  $get->bindValue(':slug', $slug, PDO::PARAM_STR);
+
+  $get->execute();
+
+  $products = $get->fetchAll(PDO::FETCH_ASSOC);
+
+  require VIEWS . '/site/category.phtml';
+}

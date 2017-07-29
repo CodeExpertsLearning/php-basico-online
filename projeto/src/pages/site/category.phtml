@@ -1,0 +1,31 @@
+
+<?php require VIEWS . '/site/header.phtml';?>
+      <div class="row">
+        <div class="col-md-12">
+            <h1><?=$products[0]['category'];?></h1>
+        </div>
+      </div>
+    
+      <hr>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <?php foreach($products as $p): ?>
+          <div class="col-md-12" style="border-bottom: 1px solid rgba(0, 0, 0, 0.12); margin-bottom: 10px; padding-bottom: 10px;">
+            <div class="col-md-4">
+               <?php if($p['image']): ?>
+                 <img src="<?=HOME .'/assets/uploads/thumbs/' . $p['image'];?>" alt="" class="img-responsive">
+               <?php else: ?>
+                <img src="http://placehold.it/360X250" alt="">
+              <?php endif; ?>
+            </div>
+            <div class="col-md-8">
+              <h1><?=$p['name'];?></h1>
+              <p><?=$p['name'];?></p>
+              <p>R$ <?=number_format($p['price'], 2, ',', '.');?></p>
+              <a href="<?=HOME;?>/product/<?=$p['slug'];?>" class="btn btn-primary">Ver Produto</a>
+            </div>
+          </div>
+        <?php endforeach;?>
+      </div>
+<?php require VIEWS . '/site/footer.phtml';?>

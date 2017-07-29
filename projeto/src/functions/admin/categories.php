@@ -8,7 +8,7 @@ function returnRulesSanitizeCategories()
 	return [
 		'name' => FILTER_SANITIZE_STRING, 
 		'description' => FILTER_SANITIZE_STRING,
-		'id'       => FILTER_SANITIZE_NUMBER_INT
+		//'id'       => FILTER_SANITIZE_NUMBER_INT
 	];
 }
 

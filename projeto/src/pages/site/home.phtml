@@ -1,0 +1,26 @@
+
+<?php require VIEWS . '/site/header.phtml';?>
+
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+        <h1>Conheça Nossos Produtos!</h1>
+        <p class="lead">Uma infinidade de cursos para você!.</p>
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <?php foreach(getAll(connection()) as $product): ?>
+        <div class="col-lg-4">
+          <?php if($product['image']): ?>
+              <img src="<?=HOME .'/assets/uploads/thumbs/' . $product['image'];?>" alt="" class="img-responsive">
+            <?php else: ?>
+              <img src="http://placehold.it/360X250" alt="">
+            <?php endif; ?>
+          <h2><?=$product['name'];?></h2>
+          <p class="text-danger"><?=$product['description'];?></p>
+          <p>R$ <?=number_format($product['price'], 2, ',', '.');?></p>
+          <p><a class="btn btn-primary" href="<?=HOME;?>/product/<?=$product['slug'];?>" role="button">Ver Produto &raquo;</a></p>
+        </div>
+      <?php endforeach;?>
+      </div>
+<?php require VIEWS . '/site/footer.phtml';?>
