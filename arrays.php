@@ -7,6 +7,10 @@
 $array = array(12, 10, "Nanderson", 10.0);
 #print $array[3];
 
+/* Associativos
+Pode-se nomear as chaves dos arrays, associando 
+os elementos do mesmo aos nomes criados
+*/
 $associativo = array('name' => "Nanderson", 'price' => 12);
 #print $associativo['name'];
 
